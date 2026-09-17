@@ -1,5 +1,6 @@
 package br.com.coutin.screenmatch;
 
+import br.com.coutin.screenmatch.model.DadosEpisodio;
 import br.com.coutin.screenmatch.model.DadosSerie;
 import br.com.coutin.screenmatch.service.ConsumoApi;
 import br.com.coutin.screenmatch.service.converteDados;
@@ -22,5 +23,11 @@ public class ScreenmatchApplication implements CommandLineRunner {
         converteDados conversor = new converteDados();
 		DadosSerie dados = conversor.obterDados(json, DadosSerie.class);
 		System.out.println(dados);
+
+		json = consumoApi.obterDados("https://www.omdbapi.com/?i=gilmore+girls&season=1&episode=2&apikey=161602d9");
+		DadosEpisodio dadosEpisodio = conversor.obterDados(json, DadosEpisodio.class);
+		System.out.println(dadosEpisodio);
+
+
 	}
 }
